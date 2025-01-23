@@ -1,0 +1,174 @@
+:root {
+    --bluesky-blue: #0085FF;
+    --primary: var(--bluesky-blue);
+    --secondary: #E8F5FF;
+    --accent: #FF6B6B;
+    --background: #FFFFFF;
+    --card-bg: #F8FAFC;
+    --text: #1A1A1A;
+    --text-light: #666666;
+    --border: #E2E8F0;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Noto Sans', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-size: 16px;
+}
+
+/* 删除原header相关样式 */
+header {
+    display: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+main .container {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+h1 {
+    text-align: center;
+    margin: 2.5rem 0 3.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* 修改footer和语言切换样式 */
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 1.5rem 1rem;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    color: var(--text-light);
+}
+
+.lang-switch {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.lang-switch a {
+    padding: 0.25rem 0.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+}
+
+.lang-switch a:hover {
+    color: var(--primary);
+    background: none;
+}
+
+.lang-switch a.active {
+    background: none;
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.content-block {
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.content-block:hover {
+    transform: translateY(-2px);
+}
+
+.zh, .zh-hant, .en, .ja {
+    padding: 2rem;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.zh.active, .zh-hant.active, .en.active, .ja.active {
+    display: block;
+}
+
+li {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.content-block p {
+    margin-bottom: 1rem;
+}
+
+.content-block p b {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 640px) {
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .content-block {
+        border-radius: 8px;
+    }
+
+    .zh, .zh-hant, .en {
+        padding: 1.5rem;
+    }
+
+    .lang-switch {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .lang-switch a {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    h1 {
+        margin: 2rem 0 2.5rem;
+        font-size: 1.5rem;
+    }
+}
