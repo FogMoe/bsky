@@ -36,6 +36,12 @@ function switchLang(lang) {
 
     // 更新 URL hash
     window.location.hash = '#' + lang;
+    
+    // 平滑滚动到顶部
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 // 根据URL hash初始化语言
@@ -48,3 +54,35 @@ function initLang() {
 window.addEventListener('load', initLang);
 // 监听URL变化
 window.addEventListener('hashchange', initLang);
+
+// 暗色模式相关功能
+function initTheme() {
+    // 获取系统主题偏好
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // 获取保存的主题设置，如果没有则使用系统偏好
+    const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function updateThemeIcon(theme) {
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+function toggleTheme(e) {
+    e.preventDefault();
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+// 绑定主题切换事件
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+// 在页面加载时初始化主题
+window.addEventListener('load', initTheme);

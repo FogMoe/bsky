@@ -11,6 +11,20 @@
     --shadow: rgba(0, 0, 0, 0.1);
 }
 
+/* 添加暗色主题变量 */
+[data-theme="dark"] {
+    --bluesky-blue: #3B9EFF;
+    --primary: var(--bluesky-blue);
+    --secondary: #1A2634;
+    --accent: #FF8585;
+    --background: #0F172A;
+    --card-bg: #1E293B;
+    --text: #E2E8F0;
+    --text-light: #94A3B8;
+    --border: #2D3748;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
 /* 添加顶部横条样式 */
 .top-banner {
     background: var(--primary);
@@ -36,6 +50,7 @@ body {
     background: var(--background);
     color: var(--text);
     font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 删除原header相关样式 */
@@ -157,6 +172,67 @@ a:hover {
     color: var(--accent);
 }
 
+.btn {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;  /* 减小垂直内边距 */
+    font-size: 0.9rem;      /* 减小字体 */
+    background: var(--primary);
+    color: var(--background);
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0.3rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 133, 255, 0.2);
+}
+
+.btn:hover {
+    background: #0066cc;
+    color: var(--background);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 133, 255, 0.3);
+}
+
+.theme-btn {
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.theme-btn:hover {
+    color: var(--primary);
+}
+
+[data-theme="dark"] .content-block {
+    box-shadow: 0 2px 12px var(--shadow);
+}
+
+[data-theme="dark"] .btn {
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: 0 2px 8px rgba(59, 158, 255, 0.2);
+}
+
+[data-theme="dark"] .btn:hover {
+    background: #4BA8FF;
+    box-shadow: 0 4px 12px rgba(59, 158, 255, 0.3);
+}
+
+[data-theme="dark"] .top-banner {
+    background: var(--primary);
+}
+
+[data-theme="dark"] footer {
+    background: var(--card-bg);
+    border-top-color: var(--border);
+}
+
 @media (max-width: 640px) {
     body {
         font-size: 15px;
@@ -192,5 +268,11 @@ a:hover {
     .top-banner {
         padding: 0.4rem;
         font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.3rem 1rem;  /* 移动端更小的内边距 */
+        font-size: 0.8rem;     /* 移动端更小的字体 */
+        border-radius: 6px;
     }
 }
