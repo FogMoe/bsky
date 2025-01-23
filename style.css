@@ -11,6 +11,23 @@
     --shadow: rgba(0, 0, 0, 0.1);
 }
 
+/* 添加顶部横条样式 */
+.top-banner {
+    background: var(--primary);
+    color: var(--background);
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 500;
+}
+
+.top-banner span {
+    display: none;
+}
+
+.top-banner span.active {
+    display: inline;
+}
+
 body {
     font-family: 'Noto Sans', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
     line-height: 1.8;
@@ -39,7 +56,7 @@ main .container {
 
 h1 {
     text-align: center;
-    margin: 2.5rem 0 3.5rem;
+    margin: 0 0 3.5rem; /* 移除上边距，保留下边距 */
     font-weight: 700;
     color: var(--text);
 }
@@ -168,7 +185,12 @@ a:hover {
     }
 
     h1 {
-        margin: 2rem 0 2.5rem;
+        margin: 0 0 2.5rem; /* 移除上边距，调整下边距 */
         font-size: 1.5rem;
+    }
+
+    .top-banner {
+        padding: 0.4rem;
+        font-size: 0.9rem;
     }
 }
